@@ -6,6 +6,11 @@ export async function getAllReports() {
   return await collection.find().toArray();
 }
 
+export async function getReportById(id) {
+  const collection = await reportsCollection();
+  return await collection.findOne({ _id: new ObjectId(id) });
+}
+
 export async function createReport(reportData) {
   const collection = await reportsCollection();
   if (!reportData.timestamp) {
